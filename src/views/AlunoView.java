@@ -1,3 +1,5 @@
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class AlunoView extends Pessoa {
@@ -101,19 +103,27 @@ public class AlunoView extends Pessoa {
 
         if (aluno.fazerLogin(email, senha, "aluno")) {
             System.out.println("Login realizado com sucesso! ");
-            EmprestimoView emprestimo = new EmprestimoView();
-            emprestimo.exibirMenu();
+            try {
+                Connection conn = ConexaoDB.conectar();
+                EmprestimoController emprestimoController = new EmprestimoController(conn);
+                EmprestimoView emprestimo = new EmprestimoView(emprestimoController);
+                emprestimo.exibirMenu();
+            } catch (SQLException e) {
+                System.out.println("Falha ao conectar ao banco de dados: " + e.getMessage());
+            }
         } else {
             System.out.println("Email ou senha invalidos. ");
             System.out.println("Digite 1 para tentar novamente ou digite 0 para voltar ao menu anterior.");
-            int opcao = scanner.nextInt();
-            if (opcao == 1) {
+            String opcao = scanner.nextLine();
+            if (opcao.equals("1")) {
                 fazerLogin();
-            } else if (opcao == 0) {
+            } else if (opcao.equals("0")) {
                 System.out.println("Voltando ao menu anterior...");
                 exibirMenu();
+            } else {
+                System.out.println("Opção inválida. Voltando ao menu anterior...");
+                exibirMenu();
             }
-
         }
     }
 }
