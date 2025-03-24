@@ -11,7 +11,7 @@ public class EmprestimoController {
         this.emprestimoDAO = new EmprestimoDAO(conn);
         this.livroDAO = new LivroDAO(conn);
     }
-
+    
     public Livro buscarLivroPorTitulo(String titulo) {
         try {
             return livroDAO.buscar(titulo);
@@ -104,3 +104,4 @@ public class EmprestimoController {
         }
     }
 }
+
