@@ -19,6 +19,6 @@ public class Funcionario extends Pessoa {
     @Override
     public String toString() {
         return "\nFuncionario - Nome: " + nome + "\nIdade: " + idade + "\nCPF: " + cpf
-                + "\nEmail: " + email + "Administrador? " + administrador;
+                + "\nEmail: " + email + "\nAdministrador? " + administrador;
     } 
 }
