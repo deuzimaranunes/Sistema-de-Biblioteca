@@ -4,11 +4,12 @@ public class FuncionarioView extends Pessoa {
     private Scanner scanner = new Scanner(System.in);
     private FuncionarioController controller;
 
-    public FuncionarioView (FuncionarioController controller) {
+    public FuncionarioView(FuncionarioController controller) {
         this.controller = controller;
     }
 
-    public FuncionarioView() {}
+    public FuncionarioView() {
+    }
 
     public void menuFuncionario() {
         boolean executando;
@@ -57,32 +58,32 @@ public class FuncionarioView extends Pessoa {
         super.cadastrarPessoa();
         System.out.println("E administrador? ");
         boolean administrador = scanner.nextBoolean();
-        
+
         Funcionario funcionario = new Funcionario(nome, idade, cpf, email, senha, administrador);
         controller.cadastrarFuncionario(funcionario);
     }
 
-    private void editarFuncionario () {
+    private void editarFuncionario() {
         super.editarPessoa();
         System.out.println("E administrador? ");
         boolean administrador = scanner.nextBoolean();
-        
+
         Funcionario funcionario = new Funcionario(nome, idade, cpf, email, senha, administrador);
         controller.atualizarFuncionario(funcionario);
     }
 
-    private void removerFuncionario (){
+    private void removerFuncionario() {
         System.out.println("CPF do funcionario a excluir: ");
         String cpf = scanner.nextLine();
         controller.excluirFuncionario(cpf);
     }
 
-    private void buscarFuncionario (){
+    private void buscarFuncionario() {
         System.out.println("CPF do funcionario a buscar: ");
         String cpf = scanner.nextLine();
 
         Funcionario funcionario = controller.buscarFuncionario(cpf);
-        if (funcionario != null){
+        if (funcionario != null) {
             System.out.println(funcionario);
         } else {
             System.out.println("Funcionario não encontrado.");
