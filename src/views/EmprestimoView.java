@@ -11,9 +11,6 @@ public class EmprestimoView {
         this.controller = controller;
     }
 
-    public EmprestimoView() {
-    }
-
     public void exibirMenu() {
         boolean executando = true;
         while (executando) {
